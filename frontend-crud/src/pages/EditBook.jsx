@@ -11,18 +11,38 @@ const EditBook = () => {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const {id} = useParams();
-  const handleSaveBook = () => {
+  useEffect(() => {
+    setLoading(true);
+    axios.get(`http://localhost:3050/${id}`)
+    .then((response) => {
+      setAuthor(response.data.author);
+      setPublishYear(response.data.publishYear);
+      setTitle(response.data.title);
+      setLoading(false)
+    }).catch((error) => {
+      setLoading(false)
+      alert('An error happended. Please check console')
+      console.log(error)
+    })
+  },[])
+  const handleEditBook = () => {
     const data = {
       title, 
       author,
       publishYear
     }
     setLoading(true);
-    axios('http://localhost:3050', data)
-    .then(() => {
-      setLoading(false)
-      navigate("/");
-    })
+    axios
+      .put(`http://localhost:3050/books/${di}`, data)
+      .then(() => {
+        setLoading(false)
+        navigate("/")
+      })
+      .catch((error) => {
+        setLoading(false)
+        alert("An error happended. Please check console")
+        console.log(error)
+      })
   }
   return (
     <div>EditBook</div>
