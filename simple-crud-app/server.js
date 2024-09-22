@@ -11,7 +11,7 @@ app.use(express.json());
 //Option 1: Allow Origins with Defaults of CORS(*)
 app.use(cors());
 app.use(cors({
-    origin: 'http://localhost:5174',
+    origin: 'http://localhost:5176',
     methods: ['GET','POST','PUT','DELETE'],
     allowedHeaders: ['Content-Type']
 }))
