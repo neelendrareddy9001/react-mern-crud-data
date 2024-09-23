@@ -15,7 +15,7 @@ router.get('/getallbooks', getAllBooks )
 router.get('/getabook/:id', getABook )
 
 //Route for update one book
-router.put('/editaboook/:id', editABook)
+router.put('/editabook/:id', editABook)
 
 //Route for delete one book
 router.delete('/deleteabook/:id', deleteABook)

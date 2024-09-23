@@ -17,7 +17,7 @@ const CrateBook = () => {
     };
     setLoading(true)
     axios
-      .post('http://localhost:3050/books', data)
+      .post('http://localhost:3050/books/createbook', data)
       .then(() => {
         setLoading(false)
         navigate('/')
