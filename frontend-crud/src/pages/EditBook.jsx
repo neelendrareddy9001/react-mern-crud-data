@@ -13,7 +13,7 @@ const EditBook = () => {
   const {id} = useParams();
   useEffect(() => {
     setLoading(true);
-    axios.get(`http://localhost:3050/${id}`)
+    axios.put(`http://localhost:3050/books/editabook/${id}`)
     .then((response) => {
       setAuthor(response.data.author);
       setPublishYear(response.data.publishYear);
@@ -33,7 +33,7 @@ const EditBook = () => {
     }
     setLoading(true);
     axios
-      .put(`http://localhost:3050/books/${id}`, data)
+      .put(`http://localhost:3050/books/editabook/${id}`, data)
       .then(() => {
         setLoading(false)
         navigate("/")
@@ -66,8 +66,8 @@ const EditBook = () => {
           />
         </div>
         <div className='my-4'>
-          <label className='text-xl mr-4 text-gray-500'>Author</label>
-          <input type='text' value={author} onChange={(e) => setAuthor(e.target.value)}
+          <label className='text-xl mr-4 text-gray-500'>Publish Year</label>
+          <input type='text' value={publishYear} onChange={(e) => setPublishYear(e.target.value)}
               className='border-2 border-gray-500 px-4 py-2 w-full rounded-md'
           />
         </div>
