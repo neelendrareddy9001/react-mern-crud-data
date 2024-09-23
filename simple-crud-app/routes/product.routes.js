@@ -1,23 +1,24 @@
 import express from "express"
 import { Book } from "../model/product.model.js";
+import {createABook,getAllBooks,getABook,editABook,deleteABook} from '../controllers/product.controller.js'
 
 const router = express.Router();
 
 
 //Route for save a new Book
-router.post('/', async (req, res) => {})
+router.post('/createbook', createABook)
 
 //Route for get all Books from database
-router.get('/', async (req, res) => {})
+router.get('/getallbooks', getAllBooks )
 
 //Route for get One book from database
-router.get('/:id', async (req, res) => {})
+router.get('/getabook/:id', getABook )
 
 //Route for update one book
-router.put('/:id', async (req, res) => {})
+router.put('/editaboook/:id', editABook)
 
 //Route for delete one book
-router.delete('/:id', async (req, res) => {})
+router.delete('/deleteabook/:id', deleteABook)
 
 
 export default router;

@@ -25,7 +25,7 @@ const EditBook = () => {
       console.log(error)
     })
   },[])
-  const handleSaveBook = () => {
+  const handleEditBook = () => {
     const data = {
       title, 
       author,
@@ -33,7 +33,7 @@ const EditBook = () => {
     }
     setLoading(true);
     axios
-      .put(`http://localhost:3050/books/${di}`, data)
+      .put(`http://localhost:3050/books/${id}`, data)
       .then(() => {
         setLoading(false)
         navigate("/")
@@ -71,7 +71,7 @@ const EditBook = () => {
               className='border-2 border-gray-500 px-4 py-2 w-full rounded-md'
           />
         </div>
-        <button className='p-2 bg-sky-300 m-8 rounded-xl' onClick={handleSaveBook}>Save</button>
+        <button className='p-2 bg-sky-300 m-8 rounded-xl' onClick={handleEditBook}>Save</button>
       </div>
     </div>
   )
