@@ -9,7 +9,17 @@ const DeleteBook = () => {
   const navigate = useNavigate();
   const {id} = useParams();
   const handleDeleteBook = () => {
-
+      setLoading(false)
+      axios
+        .delete(`http://localhost:3050/books/deleteabook/${id}`)
+        .then(() => {
+          setLoading(false)
+          navigate("/")
+        })
+        .catch((error) => {
+          setLoading(false)
+          alert("An error happened. Please Check console")
+        })
   }
   return (
     <div className='p-4'>
