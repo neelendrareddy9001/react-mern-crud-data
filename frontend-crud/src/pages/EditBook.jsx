@@ -4,6 +4,7 @@ import axios from 'axios';
 import Spinner from '../components/Spinner';
 import BackButton from '../components/BackButton';
 
+
 const EditBook = () => {
   const [title, setTitle] = useState('');
   const [author, setAuthor] = useState('');
@@ -42,8 +43,27 @@ const EditBook = () => {
         setLoading(false)
         alert("An error happended. Please check console")
         console.log(error)
-      })
+      },[])
   }
+  // const handleSaveBook = () => {
+  //   const data = {
+  //     title,
+  //     author,
+  //     publishYear
+  //   }
+  //   setLoading(true)
+  //   axios
+  //     .post('http://localhost:3050/books', data)
+  //     .then(() => {
+  //       setLoading(false)
+  //       navigate("/")
+  //     })
+  //     .catch((error) => {
+  //       setLoading(false)
+  //       alert('An error happended. Please check console')
+  //       console.log(error)
+  //     })
+  // }
   return (
     <div className='p-4'>
       <BackButton />
