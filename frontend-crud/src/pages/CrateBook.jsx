@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import BackButton from '../components/BackButton';
 import Spinner from '../components/Spinner';
 import axios from 'axios'
+import { useSnackbar } from 'notistack';
 
 
 const CrateBook = () => {
@@ -11,6 +12,7 @@ const CrateBook = () => {
   const [publishYear, setPublishYear] = useState('');
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+  const {enqueueSnackbar} = useSnackbar();
   const handleSaveBook = () => {
     const data = {
       title,author,publishYear
@@ -19,11 +21,13 @@ const CrateBook = () => {
     axios
       .post('http://localhost:3050/books/createbook', data)
       .then(() => {
-        setLoading(false)
+        setLoading(false);
+        enqueueSnackbar("Book create successfully", {variant: 'success'})
         navigate('/')
       })
       .catch((error) => {
         setLoading(false)
+        enqueueSnackbar('Error', {variant: 'error', })
         alert("An error happened. Please check details")
       })
   }
