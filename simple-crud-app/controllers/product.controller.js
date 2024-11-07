@@ -60,6 +60,17 @@ export const deleteABook = async (req, res) => {
 
 export const editABook = async (req, res) => {
   try {
+
+    if(
+      !req.body.title ||
+      !req.body.author ||
+      !req.body.publishYear
+    ) {
+      return res.status(400).send({
+        message: 'Send all required fields: title, author, publishYear'
+      })
+    }
+
     const { id } = req.params;
     const book = await Book.findByIdAndUpdate(id)
     return res.status(200).json(book);

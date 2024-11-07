@@ -16,7 +16,7 @@ const EditBook = () => {
   const {id} = useParams();
   useEffect(() => {
     setLoading(true);
-    axios.get(`hpttp://localhost:3050/books/editabook/${id}`)
+    axios.get(`hpttp://localhost:3050/books//${id}`)
     .then((response) => {
       setAuthor(response.data.author);
       setPublishYear(response.data.publishYear);
